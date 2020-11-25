@@ -3,3 +3,8 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+
+
+  input(type="submit", id="vote1", value="vote for Oskar", onClick="vote1()")
+  input(type="submit", id="vote2", value="vote for Jesper", onClick="vote2()")
+  input(type="submit", id="voteAPI", value="See votes", onClick="voteAPI()")
