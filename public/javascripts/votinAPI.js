@@ -31,8 +31,6 @@ var Nominated = [
         "id":8}
 ];
 
-console.log(Nominated[1].votes);
-
 function seeVotes(){
     console.log("hej");
     var i;
@@ -42,7 +40,7 @@ function seeVotes(){
     }
 }
 
-function voteAPI(){
+function voteAPI2(){
     switch(true) {
         case document.getElementById("rd1").checked:
             console.log("Radio 1");
@@ -79,4 +77,9 @@ function voteAPI(){
         default:
             console.log("Nothing selected");
       }
+}
+
+function voteAPI(){
+  console.log("you selected " + buttonId);
+  Nominated[id].votes++;
 }
