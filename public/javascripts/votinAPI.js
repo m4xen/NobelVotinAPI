@@ -40,7 +40,7 @@ function seeVotes(){
     }
 }
 
-function voteAPI2(){
+function voteAPI(){
     switch(true) {
         case document.getElementById("rd1").checked:
             console.log("Radio 1");
@@ -79,7 +79,66 @@ function voteAPI2(){
       }
 }
 
-function voteAPI(){
-  console.log("you selected " + buttonId);
-  Nominated[id].votes++;
+function date(){
+  var date = new Date();
+  
+  var months = ["January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December"
+];
+
+  console.log(date.getFullYear());
+  console.log(date.getMonth()+1);
+  console.log(months[date.getMonth()]);
+  console.log(date.getDate());
+  console.log(date.getHours());
+  console.log(date.getMinutes());
+  lastTimeTooVote();
+}
+
+function lastTimeTooVote(){
+  var date = new Date();
+  
+  const lastMonthTooVote = 11;
+  const lastDayTooVote = 10;
+  const lastHourTooVote = 10;
+  const lastMinTooVote = 10;
+
+  if (date.getMonth() + 1 >= lastMonthTooVote){
+    if (date.getDate() >= lastDayTooVote){
+      if (date.getHours() >= lastHourTooVote){
+        if (date.getMinutes() > lastMinTooVote){
+          console.log("Voteing time have expired");
+          disableVote();
+        }else{
+          canVote();
+        }
+      }else{
+        canVote();
+      }
+    }else{
+      canVote();
+    }
+  }
+  else{
+    canVote();
+  }
+}
+
+function canVote(){
+  console.log("You can still vote");
+}
+
+function disableVote(){
+  const button = document.getElementById('button');
+  button.disabled = true;
 }
