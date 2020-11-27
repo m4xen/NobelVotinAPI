@@ -1,10 +1,24 @@
-//var express = require('express');
-//var router = express.router();
-
 console.log ("version: 1.01.0");
+var Nominated;
 
+fetch('https://nobeldata.herokuapp.com/votes')
+         .then(response => response.json())
+         .then(data => Nominated = data)
+         .catch(err => {
+          // Catch and display errors
+          console.log("Now you done it");
+     });
+function voteYeet(){
+  fetch('https://nobeldata.herokuapp.com/vote', {
+        method: 'PUT',
+        body: "id = 0"
+      }).then(response => response.json())
+      .catch(err => {
+        throw err;
+  });
+}
 
-var Nominated = [
+var NominatedNotInUse = [
     {"name" : "Oskar",
         "votes" : 0,
         "id":1},
@@ -141,4 +155,26 @@ function canVote(){
 function disableVote(){
   const button = document.getElementById('button');
   button.disabled = true;
+}
+
+function getVoteResult(){
+  const sort_by = (field, reverse, primer) => {
+
+    const key = primer ?
+      function(x) {
+        return primer(x[field])
+      } :
+      function(x) {
+        return x[field]
+      };
+  
+    reverse = !reverse ? 1 : -1;
+  
+    return function(a, b) {
+      return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
+    }
+  }
+  Nominated.sort(sort_by('votes', true, parseInt));
+  console.log(Nominated[0].name + " " + Nominated[0].votes);
+  Nominated.sort(sort_by('id', false, parseInt));
 }
