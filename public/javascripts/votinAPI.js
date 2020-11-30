@@ -1,50 +1,6 @@
 console.log ("version: 1.01.0");
 var Nominated;
 
-fetch('https://nobeldata.herokuapp.com/votes')
-         .then(response => response.json())
-         .then(data => Nominated = data)
-         .catch(err => {
-          // Catch and display errors
-          console.log("Now you done it");
-     });
-function voteYeet(){
-  fetch('https://nobeldata.herokuapp.com/vote', {
-        method: 'PUT',
-        body: "id = 0"
-      }).then(response => response.json())
-      .catch(err => {
-        throw err;
-  });
-}
-
-var NominatedNotInUse = [
-    {"name" : "Oskar",
-        "votes" : 0,
-        "id":1},
-    {"name" : "Jesper",
-        "votes" : 0,
-        "id":2},
-    {"name" : "Max",
-        "votes" : 0,
-        "id":3},
-    {"name" : "Viktor",
-        "votes" : 0,
-        "id":4},
-    {"name" : "Någon",
-        "votes" : 0,
-        "id":5},
-    {"name" : "Någon1",
-        "votes" : 0,
-        "id":6},
-    {"name" : "Någon2",
-        "votes" : 0,
-        "id":7},
-    {"name" : "Någon3",
-        "votes" : 0,
-        "id":8}
-];
-
 function seeVotes(){
     console.log("hej");
     var i;
