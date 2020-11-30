@@ -1,10 +1,11 @@
 console.log ("version: 1.01.0");
 var Nominated;
+const filePath = "./data/votes";
 
 function seeVotes(){
     console.log("hej");
     var i;
-    for (i = 0; i < Nominated.length; i++){
+    for (i = 0; i < filePath.length; i++){
     console.log(Nominated[i].name);
     console.log(Nominated[i].votes);
     }
