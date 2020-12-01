@@ -2,6 +2,17 @@ console.log ("version: 1.01.0");
 var Nominated;
 const filePath = "./data/votes";
 
+
+function getVote(){
+  fetch('./vote')
+  .then(res => res.json())
+  .then(posts => {
+    console.log('Success:', posts);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+}
 function seeVotes(){
     console.log("hej");
     var i;
